@@ -10,41 +10,53 @@ public class Count implements Visitor<Integer> {
 
     @Override
     public Integer onPolygon(final Polygon p) {
-        return -1;
+        // Basic shape returns 1
+        return 1;
     }
 
     @Override
     public Integer onCircle(final Circle c) {
-        return -1;
+        // Basic shape returns 1
+        return 1;
     }
 
     @Override
     public Integer onGroup(final Group g) {
-        return -1;
+        // Counts all shapes in the group
+        int total = 0;
+        for (Shape s : g.getShapes()) {
+            total += s.accept(this);
+        }
+        return total;
     }
 
     @Override
     public Integer onRectangle(final Rectangle q) {
-        return -1;
+        // Basic shape, returns 1
+        return 1;
     }
 
     @Override
     public Integer onOutline(final Outline o) {
-        return -1;
+        // Outline does not impact count
+        return o.getShape().accept(this);
     }
 
     @Override
     public Integer onFill(final Fill c) {
-        return -1;
+        // Fill does not impact count
+        return c.getShape().accept(this);
     }
 
     @Override
     public Integer onLocation(final Location l) {
-        return -1;
+        // Location does not impact count
+        return l.getShape().accept(this);
     }
 
     @Override
     public Integer onStrokeColor(final StrokeColor c) {
-        return -1;
+        // Stroke does not impact count
+        return c.getShape().accept(this);
     }
 }

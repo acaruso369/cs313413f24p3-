@@ -20,6 +20,7 @@ public class Polygon extends Group {
     @Override
     public <Result> Result accept(final Visitor<Result> v) {
         // TODO your job
-        return null;
+        // Like class Outline, we only need to pass the Visitor instance
+        return v.onPolygon(this);
     }
 }
