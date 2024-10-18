@@ -21,13 +21,13 @@ public class BoundingBox implements Visitor<Location> {
     }
 
     @Override
-    public Location onGroup(final Group g) {
+    public Location onGroup(final Group g) { //have to return bounding box that has shapes in the group 
 
         return null;
     }
 
     @Override
-    public Location onLocation(final Location l) {
+    public Location onLocation(final Location l) { //moves upper left corner
 
         return null;
     }
@@ -36,6 +36,7 @@ public class BoundingBox implements Visitor<Location> {
     public Location onRectangle(final Rectangle r) {
         return null;
     }
+
 
     @Override
     public Location onStrokeColor(final StrokeColor c) {
